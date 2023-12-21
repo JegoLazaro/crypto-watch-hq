@@ -16,14 +16,14 @@ export default function Navbar() {
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
-          className="flex items-center border-b-2 justify-between p-6 lg:px-8"
+          className="flex items-center border-b-2 justify-between p-6 lg:px-8  bg-gray-800"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
             <a href="#" className="">
               <img
-                className=" h-14 w-auto"
-                src="../public/logo1.svg"
+                className=" h-16 w-auto"
+                src="../public/logo3.svg"
                 alt="logo"
               />
             </a>
@@ -44,7 +44,7 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className=" text-xl font-semibold leading-6 text-gray-900"
+                className=" text-xl font-semibold leading-6 text-green-500"
               >
                 {item.name}
               </a>

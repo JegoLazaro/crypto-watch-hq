@@ -4,13 +4,13 @@ import assets from "../../assets";
 const CoinCard = ({ coinImg, coinName, coinAbbv }) => {
   return (
     <li class="flex flex-row mb-2 border-green-600">
-      <div class="transition duration-500 shadow ease-in-out transform hover:-translate-y-1 hover:shadow-md hover:shadow-green-600 select-none cursor-pointer bg-white dark:bg-gray-700 rounded-md flex flex-1 items-center p-2">
-        <div class="flex flex-col items-center justify-center w-10 h-10 mr-4">
+      <div class="transition duration-500 shadow ease-in-out transform hover:-translate-y-1 hover:shadow-md hover:shadow-green-600 select-none cursor-pointer dark:bg-gray-700 rounded-md flex flex-1 items-center p-2 max-w-2xl min-w-full">
+        <div class=" flex flex-col items-center justify-center w-10 h-10 mr-4">
           <a href="#" class="relative block">
             <img
               alt="profil"
               src={coinImg}
-              class="mx-auto ml-2 object-cover rounded-full h-10 w-10 "
+              class="min-w-full mx-auto ml-2 object-cover rounded-full h-10 w-10 "
             />
           </a>
         </div>
@@ -20,7 +20,7 @@ const CoinCard = ({ coinImg, coinName, coinAbbv }) => {
           </div>
           <div class="font-thin  dark:text-white">{coinName}</div>
         </div>
-        <div class="text-xs pl-4 text-gray-600 dark:text-gray-200 ">
+        <div class="text-xs pl-4 hidden text-gray-600 dark:text-gray-200 ">
           {" "}
           $ 69,455
         </div>

@@ -24,7 +24,7 @@ const HeroSection = () => {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-wider text-white sm:text-6xl">
-              Welcome to Crypto Watch HQ
+              Welcome to <span className=" text-green-600">Crypto Watch HQ</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-400">
               Your Gateway to Seamless Crypto Monitoring! Explore real-time

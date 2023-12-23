@@ -1,5 +1,6 @@
 import React from "react";
 import assets from "../assets";
+import CoinCard from "./heroComponents/CoinCard";
 
 const HeroSection = () => {
   return (
@@ -17,38 +18,40 @@ const HeroSection = () => {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-2xl py-24 sm:py-28 lg:py-36">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              
-            </div>
+            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20"></div>
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-wider text-white sm:text-6xl">
-            Welcome to Crypto Watch HQ
+              Welcome to Crypto Watch HQ
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-400">
-            Your Gateway to Seamless Crypto Monitoring! Explore real-time updates, historical data, and insightful analytics for the ever-evolving world of cryptocurrencies. 
+              Your Gateway to Seamless Crypto Monitoring! Explore real-time
+              updates, historical data, and insightful analytics for the
+              ever-evolving world of cryptocurrencies.
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-400">
-            Start tracking, analyzing, and optimizing your crypto portfolio today!
+              Start tracking, analyzing, and optimizing your crypto portfolio
+              today!
             </p>
-            <div className="mt-10 flex items-center justify-start gap-x-6">
-              <a
-                href="#"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Get started
-              </a>
-              <a
-                href="#"
-                className="text-sm font-semibold leading-6 text-gray-400"
-              >
-                Learn more <span aria-hidden="true">→</span>
-              </a>
-              <img src={assets.logo1}/>
+            <div className=" justify-between  mt-8 flex  gap-x-16">
+              <div class="container flex flex-col items-center justify-center w-full mx-auto">
+                <ul class="flex flex-col">
+                  <CoinCard coinAbbv={"BTC"} coinImg={assets.btc} coinName={"Bitcoin"}/>
+                  <CoinCard coinAbbv={"ETH"} coinImg={assets.eth} coinName={"Ethereum"}/>
+                  <CoinCard coinAbbv={"USDT"} coinImg={assets.tether} coinName={"Tether"}/>
+                </ul>
+              </div>
+
+              <div class="container flex flex-col items-center justify-center w-full mx-auto">
+                <ul class="flex flex-col">
+                  <CoinCard coinAbbv={"ADA"} coinImg={assets.cardano} coinName={"Cardano"}/>
+                  <CoinCard coinAbbv={"XRP"} coinImg={assets.xrp} coinName={"Ripple"}/>
+                  <CoinCard  coinAbbv={"BNB"} coinImg={assets.bnb} coinName={"Binance"}/>
+                </ul>
+              </div>
             </div>
-            
           </div>
         </div>
         <div
@@ -62,11 +65,8 @@ const HeroSection = () => {
                 "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
             }}
           />
-          
         </div>
-        
       </div>
-      
     </div>
   );
 };

@@ -45,7 +45,7 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className=" text-xl font-semibold leading-6 text-green-500"
+                className=" text-xl hover:text-white font-semibold leading-6 text-green-500"
               >
                 {item.name}
               </a>
@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
               href="#"
-              className="text-lg font-semibold rounded-3xl bg-slate-900 leading-6 text-white px-10 py-2"
+              className="text-lg font-semibold rounded-3xl bg-green-600 leading-6 text-white px-10 py-2 hover:bg-white hover:text-green-600"
             >
               Log in 
             </a>
@@ -93,16 +93,16 @@ export default function Navbar() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 "
                     >
                       {item.name}
                     </a>
                   ))}
                 </div>
-                <div className="py-6">
+                <div className="py-6 ">
                   <a
                     href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 "
                   >
                     Log in
                   </a>

@@ -79,9 +79,10 @@ const HeroSection = () => {
   data.slice(0, 6).map((item) => (
     <CoinCard
       key={item.id} // Assuming each coin has a unique ID
-      coinAbbv={item.symbol}
+      coinAbbv={item.symbol.toUpperCase()}
       coinImg={item.image}
       coinName={item.name}
+      currentPrice={item.current_price}
     />
   ))
 }

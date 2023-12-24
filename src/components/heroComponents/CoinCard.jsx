@@ -1,7 +1,7 @@
 import React from "react";
 import assets from "../../assets";
 
-const CoinCard = ({ coinImg, coinName, coinAbbv }) => {
+const CoinCard = ({ coinImg, coinName, coinAbbv,currentPrice }) => {
   return (
     <li className="flex flex-row mb-2 border-green-600">
       <div className="transition duration-500 shadow ease-in-out transform hover:-translate-y-1 hover:shadow-md hover:shadow-green-600 select-none cursor-pointer dark:bg-gray-700 rounded-md flex flex-1 items-center p-2 max-w-2xl min-w-full">
@@ -10,7 +10,7 @@ const CoinCard = ({ coinImg, coinName, coinAbbv }) => {
             <img
               alt="profil"
               src={coinImg}
-              className="min-w-full mx-auto ml-2 object-cover rounded-full h-10 w-10 "
+              className=" mx-auto ml-2 object-cover rounded-full h-auto w-14 min-w-8 "
             />
           </a>
         </div>
@@ -18,11 +18,10 @@ const CoinCard = ({ coinImg, coinName, coinAbbv }) => {
           <div className="font-semibold text-gray-600 dark:text-gray-200">
             {coinAbbv}
           </div>
-          <div className="font-thin  dark:text-white">{coinName}</div>
+          <div className="font-thin text-sm dark:text-gray-300">{coinName}</div>
         </div>
-        <div className="text-xs pl-4 hidden text-gray-600 dark:text-gray-200 ">
-          {" "}
-          $ 69,455
+        <div className="pl-4 w-1/2 text-gray-600 dark:text-gray-200 ">
+          <h1 className="text-left hover:text-green-400 text-md">$ {currentPrice.toLocaleString('en-US', { currency: 'USD'})}</h1>
         </div>
         <button className="flex justify-end w-20 text-right pr-5">
           <svg

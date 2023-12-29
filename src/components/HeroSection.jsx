@@ -79,7 +79,7 @@ const HeroSection = () => {
     <div className="relative isolate px-6 pt-14 lg:px-8 bg-gray-800">
       <BgBlur />
       <div className="mx-auto sm:max-w-6xl py-24 sm:py-28 lg:py-36 flex flex-col md:flex-row">
-        <div className="lg:text-left sm:text-center left-div w-full md:w-1/2">
+        <div className="lg:text-left sm:text-center pr-5 left-div w-full md:w-1/2">
           <h1 className="text-4xl font-bold tracking-wider text-white sm:text-6xl">
             Welcome to <span className="text-green-600">Crypto Watch HQ</span>
           </h1>

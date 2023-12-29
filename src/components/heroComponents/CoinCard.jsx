@@ -21,7 +21,7 @@ const CoinCard = ({ coinImg, coinName, coinAbbv,currentPrice }) => {
           <div className="font-thin text-sm mr-1 dark:text-gray-300">{coinName}</div>
         </div>
         <div className="ml-1 w-1/2 text-gray-600 dark:text-gray-200 ">
-          <h1 className="text-left hover:text-green-400 text-md">$ {currentPrice.toLocaleString('en-US', { currency: 'USD'})}</h1>
+          <h1 className="text-left  hover:text-green-400 text-md">$ {currentPrice.toLocaleString('en-US', { currency: 'USD'})}</h1>
         </div>
         <button className="flex justify-end w-20 text-right pr-5">
           <svg

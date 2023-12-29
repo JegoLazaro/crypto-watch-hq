@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import axios from "axios";
+import Pagination from './Pagination';
 
 const Market = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const SAMPLE_DATA = [
         {
@@ -68,6 +70,16 @@ const Market = () => {
             setLoading(true); // Set loading to false on error
           });
       }, []);
+
+      let PageSize = 10;
+
+      const [currentPage, setCurrentPage] = useState(1);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return data.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
   return (
     <div className="px-6 pt-14 lg:px-8 bg-gray-800">
         <h1 className='text-white text-4xl p-5'>
@@ -85,7 +97,7 @@ const Market = () => {
           </tr>
         </thead>
         <tbody>
-          {SAMPLE_DATA.map(item => {
+          {data.map(item => {
             return (
               <tr>
                 <td>{item.id}</td>
@@ -97,6 +109,13 @@ const Market = () => {
           })}
         </tbody>
       </table>
+      <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={data.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
         </div>
     </div>
   )

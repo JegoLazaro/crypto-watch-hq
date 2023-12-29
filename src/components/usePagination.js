@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 
+const DOTS = "...";
+
 export const usePagination = ({
   totalCount,
   pageSize,

@@ -9,6 +9,57 @@ const HeroSection = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const SAMPLE_DATA = [
+    {
+      id:'bitcoin',
+      symbol: 'btc',
+      name:'Bitcoin',
+      image:
+        'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
+        current_price: "Loading...",
+    },
+    {
+      id:'etheruem',
+      symbol: 'eth',
+      name:'Etheruem',
+      image:
+      'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880',
+        current_price: "Loading...",
+    },
+    {
+      id:'tether',
+      symbol: 'usdt',
+      name:'Tether',
+      image:
+        'https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707',
+        current_price: "Loading...",
+    },
+    {
+      id:'binance coin',
+      symbol: 'bnb',
+      name:'Binance Coin',
+      image:
+        'https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png?1547034615',
+        current_price: "Loading...",
+    },
+    {
+      id:'cardano',
+      symbol: 'ada',
+      name:'Cardano',
+      image:
+      'https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860',
+        current_price: "Loading...",
+    },
+    {
+      id:'ripple',
+      symbol: 'xrp',
+      name:'XRP',
+      image:
+        'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731',
+        current_price: "Loading...",
+    },
+  ]
+
   useEffect(() => {
     axios
       .get(
@@ -48,7 +99,17 @@ const HeroSection = () => {
           </h1>
           <div className="mt-4 flex flex-col justify-start w-full mx-auto">
             {loading ? (
-              <p className="text-2xl py-20  text-white w-full  text-center">Loading...</p>
+              <ul className="flex-wrap max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-2">
+              {SAMPLE_DATA.map((item) => (
+                <CoinCard
+                  key={item.id}
+                  coinAbbv={item.symbol.toUpperCase()}
+                  coinImg={item.image}
+                  coinName={item.name}
+                  currentPrice={item.current_price}
+                />
+              ))}
+            </ul>
             ) : (
               <ul className="flex-wrap max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-2">
                 {data.slice(0, 6).map((item) => (

@@ -37,7 +37,6 @@ const Pagination = props => {
     <ul
       className={classnames('pagination-container', { [className]: className })}
     >
-       {/* Left navigation arrow */}
       <li
         className={classnames('pagination-item', {
           disabled: currentPage === 1
@@ -48,12 +47,10 @@ const Pagination = props => {
       </li>
       {paginationRange.map(pageNumber => {
          
-        // If the pageItem is a DOT, render the DOTS unicode character
-        if (pageNumber === 4) {
+        if (pageNumber === 5) {
           return <li className="pagination-item dots">&#8230;</li>;
         }
 		
-        // Render our Page Pills
         return (
           <li
             className={classnames('pagination-item', {
@@ -65,7 +62,6 @@ const Pagination = props => {
           </li>
         );
       })}
-      {/*  Right Navigation arrow */}
       <li
         className={classnames('pagination-item', {
           disabled: currentPage === lastPage

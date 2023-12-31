@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
-import Pagination from "./Pagination";
+import Pagination from "./MarketComponents/Pagination";
 import { SAMPLE_DATA } from "../assets/data/SAMPLE_DATA";
 
 const Market = () => {
@@ -70,6 +70,7 @@ const Market = () => {
       .catch((error) => {
         console.log("ERROR => ", error);
         setLoading(true); // Set loading to false on error
+
       });
   }, []);
 
@@ -96,13 +97,14 @@ const Market = () => {
               <th className="pl-3 text-2xl text-gray-300">Price</th>
               <th className="pl-2 text-2xl text-gray-300">7d</th>
               <th className="pl-3 text-2xl text-gray-300">Market Cap</th>
+              <th className="pl-3 text-2xl text-gray-300">Last 7D</th>
             </tr>
           </thead>
 
           <tbody>
             {currentTableData.map((item) => {
               return (
-                <tr className="hover:bg-gray-400 border-b-4 cursor-pointer text-white">
+                <tr className="hover:bg-gray-600 border-b-4 cursor-pointer text-white">
                   <td className="flex flex-row p-2 ">
                     <img src={item.image} className="w-10 h-auto" />
                     <h1 className="px-3 self-center text-lg font-semibold">
@@ -115,12 +117,17 @@ const Market = () => {
                       currency: "USD",
                     })}
                   </td>
-                  <td>{item.market_cap_change_percentage_24h}</td>
+                  <td>{
+                  item.market_cap_change_percentage_24h.toFixed(2) > 0 ? <span style={{color : "#34c759"}}>{item.market_cap_change_percentage_24h.toFixed(2)}%</span> : <span style={{color : "#ff3b30"}}>{item.market_cap_change_percentage_24h.toFixed(2)}%</span> 
+                  }</td>
                   <td className=" tracking-wide">
                     ${" "}
                     {item.market_cap.toLocaleString("en-US", {
                       currency: "USD",
                     })}
+                  </td>
+                  <td className="border-l-2 pl-2 mx-auto">
+                    SPARKLINE
                   </td>
                 </tr>
               );

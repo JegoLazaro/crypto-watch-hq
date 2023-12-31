@@ -3,6 +3,7 @@ import axios from "axios";
 import Pagination from "./MarketComponents/Pagination";
 import { SAMPLE_DATA } from "../assets/data/SAMPLE_DATA";
 import Chart from "./MarketComponents/Chart";
+import { Link } from "react-router-dom";
 
 const fetchData = async () => {
     try {
@@ -65,7 +66,7 @@ const Market = () => {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody><Link to={"Coin"} className="">
             {currentTableData.map((item) => {
               return (
                 <tr className="hover:bg-gray-600 border-b-4 cursor-pointer text-white">
@@ -107,6 +108,7 @@ const Market = () => {
                 </tr>
               );
             })}
+            </Link>
           </tbody>
         </table>
         <Pagination

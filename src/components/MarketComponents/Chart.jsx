@@ -25,7 +25,7 @@ const Chart = ({sparkline, priceChange}) => {
         }
     }
   return (
-    <ReactApexChart options={chartOptions} series={chartOptions.series} className=" lg:w-20 md:w-16 sm:w-10 mx-auto"/>
+    <ReactApexChart options={chartOptions} series={chartOptions.series} className=" lg:w-20 md:w-16 w-16 sm:w-10 mx-auto"/>
   )
 }
 

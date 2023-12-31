@@ -2,61 +2,12 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import Pagination from "./MarketComponents/Pagination";
 import { SAMPLE_DATA } from "../assets/data/SAMPLE_DATA";
+import Chart from "./MarketComponents/Chart";
 
 const Market = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  //   const SAMPLE_DATA = [
-  //     {
-  //       id: "bitcoin",
-  //       symbol: "btc",
-  //       name: "Bitcoin",
-  //       image:
-  //         "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-  //       current_price: "Loading...",
-  //     },
-  //     {
-  //       id: "etheruem",
-  //       symbol: "eth",
-  //       name: "Etheruem",
-  //       image:
-  //         "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-  //       current_price: "Loading...",
-  //     },
-  //     {
-  //       id: "tether",
-  //       symbol: "usdt",
-  //       name: "Tether",
-  //       image:
-  //         "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
-  //       current_price: "Loading...",
-  //     },
-  //     {
-  //       id: "binance coin",
-  //       symbol: "bnb",
-  //       name: "Binance Coin",
-  //       image:
-  //         "https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png?1547034615",
-  //       current_price: "Loading...",
-  //     },
-  //     {
-  //       id: "cardano",
-  //       symbol: "ada",
-  //       name: "Cardano",
-  //       image:
-  //         "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
-  //       current_price: "Loading...",
-  //     },
-  //     {
-  //       id: "ripple",
-  //       symbol: "xrp",
-  //       name: "XRP",
-  //       image:
-  //         "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731",
-  //       current_price: "Loading...",
-  //     },
-  //   ];
   useEffect(() => {
     axios
       .get(
@@ -70,7 +21,6 @@ const Market = () => {
       .catch((error) => {
         console.log("ERROR => ", error);
         setLoading(true); // Set loading to false on error
-
       });
   }, []);
 
@@ -93,11 +43,15 @@ const Market = () => {
         <table className="w-full border-green-700  mb-5">
           <thead>
             <tr className="text-left border-b-4 border-green-500">
-              <th className="pl-3 text-2xl text-green-500">Coin</th>
-              <th className="pl-3 text-2xl text-gray-300">Price</th>
-              <th className="pl-2 text-2xl text-gray-300">7d</th>
-              <th className="pl-3 text-2xl text-gray-300">Market Cap</th>
-              <th className="pl-3 text-2xl text-gray-300">Last 7D</th>
+              <th className="pl-3 text-2xl text-green-50 sm:text-xl">Coin</th>
+              <th className="pl-3 text-2xl text-gray-300 sm:text-xl">Price</th>
+              <th className="pl-2 sm:text-xl text-2xl text-gray-300">7d</th>
+              <th className="pl-3 sm:text-xl text-2xl hidden sm:block text-gray-300">
+                Market Cap
+              </th>
+              <th className="text-center sm:text-xl text-2xl text-gray-300">
+                Last 7D
+              </th>
             </tr>
           </thead>
 
@@ -105,29 +59,40 @@ const Market = () => {
             {currentTableData.map((item) => {
               return (
                 <tr className="hover:bg-gray-600 border-b-4 cursor-pointer text-white">
-                  <td className="flex flex-row p-2 ">
+                  <td className="flex flex-row w-auto p-2 ">
                     <img src={item.image} className="w-10 h-auto" />
-                    <h1 className="px-3 self-center text-lg font-semibold">
+                    <h1 className="px-2  sm:text-sm lg:text-lg self-center text-lg font-semibold">
                       {item.name} ({item.symbol.toUpperCase()})
                     </h1>
                   </td>
-                  <td className="text-lg font-semibold tracking-wide">
+                  <td className="lg:text-lg sm:text-xs font-semibold tracking-wide">
                     ${" "}
                     {item.current_price.toLocaleString("en-US", {
                       currency: "USD",
                     })}
                   </td>
-                  <td>{
-                  item.market_cap_change_percentage_24h.toFixed(2) > 0 ? <span style={{color : "#34c759"}}>{item.market_cap_change_percentage_24h.toFixed(2)}%</span> : <span style={{color : "#ff3b30"}}>{item.market_cap_change_percentage_24h.toFixed(2)}%</span> 
-                  }</td>
-                  <td className=" tracking-wide">
+                  <td className="sm:text-sm lg:text-xl">
+                    {item.market_cap_change_percentage_24h.toFixed(2) > 0 ? (
+                      <span style={{ color: "#34c759" }}>
+                        +{item.market_cap_change_percentage_24h.toFixed(2)}%
+                      </span>
+                    ) : (
+                      <span style={{ color: "#ff3b30" }}>
+                        {item.market_cap_change_percentage_24h.toFixed(2)}%
+                      </span>
+                    )}
+                  </td>
+                  <td className="sm:text-xs pb-7 lg:text-lg tracking-wide hidden sm:block">
                     ${" "}
                     {item.market_cap.toLocaleString("en-US", {
                       currency: "USD",
                     })}
                   </td>
-                  <td className="border-l-2 pl-2 mx-auto">
-                    SPARKLINE
+                  <td className="border-l-2 pl-2 mx-auto ">
+                    <Chart
+                      sparkline={item.sparkline_in_7d}
+                      priceChange={item.price_change_percentage_7d_in_currency}
+                    />
                   </td>
                 </tr>
               );

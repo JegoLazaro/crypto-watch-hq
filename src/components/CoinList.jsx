@@ -4,6 +4,7 @@ import { SAMPLE_DATA } from "../assets/data/SAMPLE_DATA";
 import BgBlur from "./heroComponents/BgBlur";
 import BgBlurLow from "./heroComponents/BgBlurLow";
 import { Tilt } from "react-tilt";
+import Modal from "./CoinListComponent/Modal";
 
 export const Coin = ({ iconUrl, iconText, shadow_Color }) => {
   const [hover, setHover] = useState(false);
@@ -35,7 +36,7 @@ export const Coin = ({ iconUrl, iconText, shadow_Color }) => {
       }}
     >
       <img src={iconUrl} alt="icon" className={`${styles.featureImg}`} />
-      <p className={`${styles.featureText}`}
+      <p className={`${styles.featureText} text-lg`}
         style={{
           color: hover
             ?  `${shadow_Color}`
@@ -51,18 +52,29 @@ export const Coin = ({ iconUrl, iconText, shadow_Color }) => {
 };
 
 const CoinCards = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCoin, setSelectedCoin] = useState(null);
+
+  const openModal = (coin) => {
+    setSelectedCoin(coin);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCoin(null);
+  };
 
   return (
     <div className={`${styles.section} relative isolate  bg-gray-800 px-2 mt-12 lg:px-8 py-32 -my-12`}>
-        <BgBlur/>
+      <BgBlur />
       <div className={`${styles.subSection} items-center justify-start mx-auto max-w-7xl flex-col text-center `}>
-        
         <h1 className="text-5xl p-12 font-bold tracking-wide text-white ">
-            Trending Coins
+          Trending Coins
         </h1>
         <div className={styles.flexWrap}>
-          {SAMPLE_DATA.slice(0,21).map((coin, index) => (
-            <a key={index} className="cursor-pointer">
+          {SAMPLE_DATA.slice(0, 21).map((coin, index) => (
+            <a key={index} className="cursor-pointer" onClick={() => openModal(coin)}>
               <Coin
                 iconUrl={coin.image}
                 iconText={coin.name}
@@ -73,6 +85,14 @@ const CoinCards = () => {
         </div>
         <BgBlurLow />
       </div>
+
+      {isModalOpen && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          coin={selectedCoin}
+        />
+      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
 
-const Chart = ({sparkline, priceChange}) => {
+const Chart = ({sparkline, priceChange, isModal}) => {
     const[chartOptions] = useState({
         series:[{
             data: [...sparkline.price],
@@ -25,7 +25,7 @@ const Chart = ({sparkline, priceChange}) => {
         }
     }
   return (
-    <ReactApexChart options={chartOptions} series={chartOptions.series} className=" lg:w-20 md:w-16 w-16 sm:w-10 mx-auto"/>
+    <ReactApexChart options={chartOptions} series={chartOptions.series} className={` ${isModal ? "lg:w-full " : "lg:w-20 md:w-16 w-16 sm:w-10" }  mx-auto`}/>
   )
 }
 

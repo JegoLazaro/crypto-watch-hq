@@ -6,16 +6,16 @@ import Chart from "./MarketComponents/Chart";
 import { Link } from "react-router-dom";
 
 const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=true&price_change_percentage=7d&locale=en"
-      );
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      throw error;
-    }
-  };
+  try {
+    const response = await axios.get(
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=true&price_change_percentage=7d&locale=en"
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 
 const Market = () => {
   const [data, setData] = useState([]);
@@ -55,9 +55,15 @@ const Market = () => {
         <table className="w-full border-green-700  mb-5">
           <thead>
             <tr className="text-left border-b-4 border-green-500">
-              <th className="pl-3 lg:text-2xl text-2xl md:text-xl text-green-500 sm:text-xl">Coin</th>
-              <th className="pl-3 lg:text-2xl text-2xl md:text-xl text-gray-300 sm:text-xl">Price</th>
-              <th className="pl-2 sm:text-xl lg:text-2xl text-2xl md:text-xl text-gray-300">7d</th>
+              <th className="pl-3 lg:text-2xl text-2xl md:text-xl text-green-500 sm:text-xl">
+                Coin
+              </th>
+              <th className="pl-3 lg:text-2xl text-2xl md:text-xl text-gray-300 sm:text-xl">
+                Price
+              </th>
+              <th className="pl-2 sm:text-xl lg:text-2xl text-2xl md:text-xl text-gray-300">
+                7d
+              </th>
               <th className="pl-3 sm:text-xl lg:text-2xl text-2xl md:text-xl hidden sm:block text-gray-300">
                 Market Cap
               </th>
@@ -71,14 +77,17 @@ const Market = () => {
             {currentTableData.map((item) => {
               return (
                 <tr className="hover:bg-gray-600 border-b-4  text-white">
-                
                   <td className="flex flex-row w-auto p-2 ">
-                    <img src={item.image} className="w-10 h-auto object-contain" />
+                    <img
+                      src={item.image}
+                      className="w-10 h-auto object-contain"
+                    />
                     <h1 className="px-3 md:text-md sm:text-md lg:text-lg self-center text-lg font-semibold">
-                      <span className="hidden sm:block">{item.name}</span> ({item.symbol.toUpperCase()})
+                      <span className="hidden sm:block">{item.name}</span> (
+                      {item.symbol.toUpperCase()})
                     </h1>
                   </td>
-                  
+
                   <td className="lg:text-lg md:text-lg pl-6 sm:text-xs font-semibold tracking-wide">
                     ${" "}
                     {item.current_price.toFixed(2).toLocaleString("en-US", {
@@ -103,10 +112,14 @@ const Market = () => {
                     })}
                   </td>
                   <td className="border-l-2 pl-2 mx-auto cursor-pointer">
-                  <Link to={"Coin"} className="flex" ><Chart
-                      sparkline={item.sparkline_in_7d}
-                      priceChange={item.price_change_percentage_7d_in_currency}
-                    /></Link>
+                    <Link to={"Coin"} className="flex">
+                      <Chart
+                        sparkline={item.sparkline_in_7d}
+                        priceChange={
+                          item.price_change_percentage_7d_in_currency
+                        }
+                      />
+                    </Link>
                   </td>
                 </tr>
               );

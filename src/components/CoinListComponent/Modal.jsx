@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
+import Chart from "../MarketComponents/Chart";
 
-const Modal = ({ isOpen, onClose, coin }) => {
+const Modal = ({ isOpen, onClose, coin, sparkline, priceChange }) => {
   if (!isOpen) {
     return null;
   }
@@ -9,31 +10,100 @@ const Modal = ({ isOpen, onClose, coin }) => {
     <div className="fixed inset-0 overflow-y-auto">
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity">
-          <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+          <div className="absolute inset-0 bg-gray-500 opacity-95"></div>
         </div>
-
-        <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
-
+        <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
+        &#8203;
         <div
-          className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:w-full sm:max-w-2xl"
+          className="inline-block align-bottom  rounded-lg text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:w-full sm:max-w-2xl"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <div className="bg-white p-4">
-            {/* Add your coin details here */}
-            <h2 className="text-2xl font-bold mb-4">{coin.name}</h2>
-            <img src={coin.image} alt={coin.name} className="w-20 h-20 mx-auto mb-4" />
-            {/* Add more details if needed */}
-            {/* Example: <p>Price: {coin.price}</p> */}
-
-            <button
-              type="button"
-              className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 rounded-md hover:bg-gray-300 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-400"
-              onClick={onClose}
-            >
-              Close
-            </button>
+          <div className="mx-auto bg-gray-700   shadow-lg w-full rounded-2xl">
+            <div className="h-auto max-w-2xl mx-auto p-3 overflow-hidden bg-gray-800 py-20">
+              <div className="flex flex-row justify-between">
+                <div></div>
+                <h2 className="text-2xl text-gray-300 font-bold mb-4">
+                  {coin.name} ({coin.symbol.toUpperCase()})
+                </h2>
+                <button
+                  type="button"
+                  className="inline-flex justify-center  px-4 py-3 text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 rounded-md hover:bg-gray-300 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-400"
+                  onClick={onClose}
+                >
+                  Close
+                </button>
+              </div>
+              <img
+                src={coin.image}
+                alt={coin.name}
+                className="w-20 h-20 mx-auto mb-4"
+              />
+              <Chart
+                sparkline={coin.sparkline_in_7d}
+                priceChange={coin.price_change_percentage_7d_in_currency}
+                isModal
+              />
+              <h1 className="text-3xl text-gray-300 tracking-wide">
+                ${" "}
+                {coin.current_price.toLocaleString("en-US", {
+                  currency: "USD",
+                })}
+              </h1>
+              <h1 className="text-xl tracking-wide">
+              {coin.market_cap_change_percentage_24h.toFixed(2) > 0 ? (
+                      <span style={{ color: "#34c759" }}>
+                        + {coin.market_cap_change_percentage_24h.toFixed(2)}%
+                      </span>
+                    ) : (
+                      <span style={{ color: "#ff3b30" }}>
+                        {coin.market_cap_change_percentage_24h.toFixed(2)}%
+                      </span>
+                    )}
+              </h1>
+            </div>
+            <div className="p-5 ">
+              <div className="grid grid-cols-3 gap-4 mt-2">
+                <div className="h-14 bg-gray-200 rounded animate-pulse">
+                  <h1 className="pl-2">
+                    Market Cap:${" "}
+                    {coin.market_cap.toLocaleString("en-US", {
+                      currency: "USD",
+                    })}
+                  </h1>
+                </div>
+                <div className="h-8 bg-gray-200 rounded animate-pulse">
+                  <h1 className="pl-2">
+                    Market Vol: {coin.total_volume.toLocaleString("en-US")}
+                  </h1>
+                </div>
+                <div className="h-8 bg-gray-200 rounded animate-pulse">
+                  <h1 className="pl-2">
+                    ATH: ${" "}
+                    {coin.ath.toLocaleString("en-US", {
+                      currency: "USD",
+                    })}
+                  </h1>
+                </div>
+                <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                  <h1 className="pl-2">
+                    24h High: ${" "}
+                    {coin.high_24h.toLocaleString("en-US", {
+                      currency: "USD",
+                    })}
+                  </h1>
+                </div>
+                <div className="h-8 bg-gray-200 rounded  animate-pulse">
+                  <h1 className="pl-2">
+                    24h Low: ${" "}
+                    {coin.low_24h.toLocaleString("en-US", {
+                      currency: "USD",
+                    })}
+                  </h1>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

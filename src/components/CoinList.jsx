@@ -22,7 +22,7 @@ export const Coin = ({ iconUrl, iconText, shadow_Color }) => {
   }
 
   return (
-    <Tilt options={defaultOptions} style={{ height: 220, width: 210 }}>
+    <Tilt options={defaultOptions} style={{ height: 215, width: 180 }}>
     <div
       className={`${styles.featureCard} bg-gray-00 border-l-2 border-t-2 border-slate-600 relative isolate  transition-transform  ${
         hover ? "scale-110" : ""
@@ -70,7 +70,7 @@ const CoinCards = () => {
       <BgBlur />
       <div className={`${styles.subSection} items-center justify-start mx-auto max-w-7xl flex-col text-center `}>
         <h1 className="text-5xl p-12 font-bold tracking-wide text-white ">
-          Trending Coins
+          Trending <span className="text-green-600">Coins</span>
         </h1>
         <div className={styles.flexWrap}>
           {SAMPLE_DATA.slice(0, 21).map((coin, index) => (

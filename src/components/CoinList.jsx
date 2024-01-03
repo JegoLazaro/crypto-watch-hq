@@ -3,11 +3,25 @@ import styles from "../assets/Globals";
 import { SAMPLE_DATA } from "../assets/data/SAMPLE_DATA";
 import BgBlur from "./heroComponents/BgBlur";
 import BgBlurLow from "./heroComponents/BgBlurLow";
+import { Tilt } from "react-tilt";
 
-export const FeatureCard = ({ iconUrl, iconText, shadow_Color }) => {
+export const Coin = ({ iconUrl, iconText, shadow_Color }) => {
   const [hover, setHover] = useState(false);
 
+  const defaultOptions = {
+    reverse:        true,  // reverse the tilt direction
+    max:            60,     // max tilt rotation (degrees)
+    perspective:    1000,   // Transform perspective, the lower the more extreme the tilt gets.
+    scale:          1.1,    // 2 = 200%, 1.5 = 150%, etc..
+    speed:          3200,   // Speed of the enter/exit transition
+    transition:     true,   // Set a transition on enter/exit.
+    axis:           null,   // What axis should be disabled. Can be X or Y.
+    reset:          true,    // If the tilt effect has to be reset on exit.
+    easing:         "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+  }
+
   return (
+    <Tilt options={defaultOptions} style={{ height: 220, width: 210 }}>
     <div
       className={`${styles.featureCard} bg-gray-00 border-l-2 border-t-2 border-slate-600 relative isolate  transition-transform  ${
         hover ? "scale-110" : ""
@@ -17,13 +31,11 @@ export const FeatureCard = ({ iconUrl, iconText, shadow_Color }) => {
       style={{
         boxShadow: hover
           ? `1px 3px 20px 4px ${shadow_Color}`
-          : "25px 30px 40px rgba(0,0,0,0.5 ) ",
+          : "25px 30px 40px rgba(0,3,0,0.5 ) ",
       }}
     >
       <img src={iconUrl} alt="icon" className={`${styles.featureImg}`} />
       <p className={`${styles.featureText}`}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
         style={{
           color: hover
             ?  `${shadow_Color}`
@@ -34,10 +46,11 @@ export const FeatureCard = ({ iconUrl, iconText, shadow_Color }) => {
         {iconText}
       </p>
     </div>
+    </Tilt>
   );
 };
 
-const SkillCards = () => {
+const CoinCards = () => {
 
   return (
     <div className={`${styles.section} relative isolate  bg-gray-800 px-2 mt-12 lg:px-8 py-32 -my-12`}>
@@ -50,7 +63,7 @@ const SkillCards = () => {
         <div className={styles.flexWrap}>
           {SAMPLE_DATA.slice(0,21).map((coin, index) => (
             <a key={index} className="cursor-pointer">
-              <FeatureCard
+              <Coin
                 iconUrl={coin.image}
                 iconText={coin.name}
                 shadow_Color={coin.shadowColor}
@@ -64,4 +77,4 @@ const SkillCards = () => {
   );
 };
 
-export default SkillCards;
+export default CoinCards;

@@ -26,6 +26,7 @@ const Market = () => {
       try {
         const responseData = await fetchData();
         setData(responseData);
+        //console.log("DATA NOW=>",data)
         setLoading(false);
       } catch (error) {
         setLoading(true);
@@ -43,7 +44,7 @@ const Market = () => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     console.log("DATA =>> ", data);
-    return data.slice(firstPageIndex, lastPageIndex);
+    return SAMPLE_DATA.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
   return (
     <div className="px-2 pt-14 lg:px-8 py-5 -my-12 bg-gray-800">
@@ -66,16 +67,18 @@ const Market = () => {
             </tr>
           </thead>
 
-          <tbody><Link to={"Coin"} className="">
+          <tbody className="">
             {currentTableData.map((item) => {
               return (
-                <tr className="hover:bg-gray-600 border-b-4 cursor-pointer text-white">
+                <tr className="hover:bg-gray-600 border-b-4  text-white">
+                
                   <td className="flex flex-row w-auto p-2 ">
                     <img src={item.image} className="w-10 h-auto object-contain" />
                     <h1 className="px-3 md:text-md sm:text-md lg:text-lg self-center text-lg font-semibold">
                       <span className="hidden sm:block">{item.name}</span> ({item.symbol.toUpperCase()})
                     </h1>
                   </td>
+                  
                   <td className="lg:text-lg md:text-lg pl-6 sm:text-xs font-semibold tracking-wide">
                     ${" "}
                     {item.current_price.toFixed(2).toLocaleString("en-US", {
@@ -99,16 +102,15 @@ const Market = () => {
                       currency: "USD",
                     })}
                   </td>
-                  <td className="border-l-2 pl-2 mx-auto ">
-                    <Chart
+                  <td className="border-l-2 pl-2 mx-auto cursor-pointer">
+                  <Link to={"Coin"} className="flex" ><Chart
                       sparkline={item.sparkline_in_7d}
                       priceChange={item.price_change_percentage_7d_in_currency}
-                    />
+                    /></Link>
                   </td>
                 </tr>
               );
             })}
-            </Link>
           </tbody>
         </table>
         <Pagination

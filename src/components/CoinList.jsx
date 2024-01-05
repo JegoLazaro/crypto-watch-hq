@@ -52,6 +52,7 @@ export const Coin = ({ iconUrl, iconText, shadow_Color }) => {
 };
 
 const CoinCards = () => {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCoin, setSelectedCoin] = useState(null);
 
@@ -66,7 +67,7 @@ const CoinCards = () => {
   };
 
   return (
-    <div className={`${styles.section} relative isolate  bg-gray-800 px-2 mt-12 lg:px-8 py-32 -my-12`}>
+    <div className={`${styles.section} relative isolate  bg-gray-800 px-2 lg:px-8 py-32 -my-12`}>
       <BgBlur />
       <div className={`${styles.subSection} items-center justify-start mx-auto max-w-7xl flex-col text-center `}>
         <h1 className="text-5xl p-12 font-bold tracking-wide text-white ">

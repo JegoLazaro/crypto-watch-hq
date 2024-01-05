@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import Market from './components/Market'
 import CoinList from './components/CoinList'
+import FeaturesSection from './components/FeaturesSection'
 
 const Home = () => {
   return (
@@ -10,7 +11,9 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <Market />
+      <FeaturesSection />
       <CoinList />
+      
     </div>
   )
 }

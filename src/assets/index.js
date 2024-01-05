@@ -6,6 +6,7 @@ import tether from "./tether_icon.png"
 import xrp from "./xrp_icon.png"
 import cardano from "./cardano_icon.png"
 import bnb from "./bnb_icon.png"
+import hero from "./heroSection.png"
 
 export default {
     logo3,
@@ -15,5 +16,6 @@ export default {
     tether,
     xrp,
     cardano, 
-    bnb
+    bnb,
+    hero
 }

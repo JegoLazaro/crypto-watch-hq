@@ -5,7 +5,7 @@ import { SAMPLE_DATA } from "../assets/data/SAMPLE_DATA";
 import Chart from "./MarketComponents/Chart";
 import { Link } from "react-router-dom";
 
-const fetchData = async () => {
+export const fetchData = async () => {
   try {
     const response = await axios.get(
       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=true&price_change_percentage=7d&locale=en"
@@ -44,7 +44,7 @@ const Market = () => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     console.log("DATA =>> ", data);
-    return SAMPLE_DATA.slice(firstPageIndex, lastPageIndex);
+    return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
   return (
     <div className="px-2 pt-14 lg:px-8 py-5 -my-12 bg-gray-800">
@@ -112,14 +112,14 @@ const Market = () => {
                     })}
                   </td>
                   <td className="border-l-2 pl-2 mx-auto cursor-pointer">
-                    <Link to={"Coin"} className="flex">
+                    {/* <Link to={"Coin"} className="flex"> */}
                       <Chart
                         sparkline={item.sparkline_in_7d}
                         priceChange={
                           item.price_change_percentage_7d_in_currency
                         }
                       />
-                    </Link>
+                    {/* </Link> */}
                   </td>
                 </tr>
               );
@@ -127,7 +127,7 @@ const Market = () => {
           </tbody>
         </table>
         <Pagination
-          className="pagination-bar mx-auto "
+          className="pagination-bar mx-auto"
           currentPage={currentPage}
           totalCount={data.length}
           pageSize={PageSize}

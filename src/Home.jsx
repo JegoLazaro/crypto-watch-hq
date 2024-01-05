@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection'
 import Market from './components/Market'
 import CoinList from './components/CoinList'
 import FeaturesSection from './components/FeaturesSection'
+import Footer from './components/Footer'
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
       <Market />
       <FeaturesSection />
       <CoinList />
-      
+      <Footer />
     </div>
   )
 }

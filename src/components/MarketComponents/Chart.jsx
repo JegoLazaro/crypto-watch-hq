@@ -14,7 +14,7 @@ const Chart = ({sparkline, priceChange, isModal}) => {
             animation: {enabled: true},
         },
         title: {
-            text: 'Weekly Chart (7d)',
+            text: isModal ? 'Weekly Chart (7d)' : '',
             align: 'left',
           },
         tooltip: {enabled: isModal ? true : false},
@@ -23,7 +23,7 @@ const Chart = ({sparkline, priceChange, isModal}) => {
         },
         colors: [chartColor()],
         grid: {
-            show: true,
+            show: isModal ? true :false,
             borderColor: '#90A4AE',
             strokeDashArray: 0,
             position: 'back',

@@ -46,14 +46,14 @@ const Faq = () => {
             {accordionItems.map((item, index) => (
               <div key={index} className="">
                 <button
-                  className="w-full max-w-7xl p-4 text-left bg-gray-200 hover:bg-gray-300 focus:outline-none"
+                  className="w-full max-w-7xl p-4 text-left bg-gray-700 rounded-lg mt-1 text-xl font-semibold text-green-500 hover:bg-gray-600 focus:outline-none transition duration-300 ease-in-out"
                   onClick={() => toggleAccordion(index)}
                 >
-                  {item.question}
+                  {index + 1}{"."} {item.question}
                 </button>
                 {activeIndex === index && (
-                  <div className="p-4 bg-white border border-gray-300 mt-1">
-                    {item.answer}
+                  <div className="p-4 rounded-lg text-lg bg-gray-400 border font-semibold border-gray-300 mt-1 transition duration-300 ease-in-out">
+                    {">"} {item.answer}
                   </div>
                 )}
               </div>

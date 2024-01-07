@@ -41,7 +41,7 @@ const Footer = () => {
         </ul>
         <div className="pt-8 flex max-w-xs mx-auto items-center justify-between">
           <a
-            href="#"
+            href="https://jegolazaro.vercel.app/"
             className="text-gray-400 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white"
           >
             <svg
@@ -56,7 +56,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="#"
+            href="https://jegolazaro.vercel.app/"
             className="text-gray-400 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white"
           >
             <svg
@@ -71,7 +71,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="#"
+            href="https://github.com/JegoLazaro"
             className="text-gray-400 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white"
           >
             <svg
@@ -86,7 +86,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/jose-gabriel-lazaro-b842a8277/"
             className="text-gray-400 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white"
           >
             <svg
@@ -101,7 +101,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="#"
+            href="https://jegolazaro.vercel.app/"
             className="text-gray-400 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white"
           >
             <svg

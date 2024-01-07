@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" overflow-hidden bg-gray-800 px-6 mt-12 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+    <footer className=" overflow-hidden bg-gray-800 px-6  py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="max-w-7xl h-0.5 mx-auto bg-gray-400 mb-5" />
       <div className="max-w-screen-xl px-4 mx-auto">
         <ul className="flex flex-wrap justify-between max-w-screen-md mx-auto text-lg font-light">

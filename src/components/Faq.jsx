@@ -39,20 +39,20 @@ const Faq = () => {
     <div className="overflow-hidden bg-gray-800 px-6 -mt-28 py-10 sm:py-14 lg:overflow-visible lg:px-0 flex items-center justify-center">
       <div className="px-20 py-20 w-full ">
         <div className="flex flex-col max-w-7xl mx-auto">
-          <h2 className="w-full mr-8 py-10 text-gray-200 text-3xl font-extrabold leading-9 md:w-full">
+          <h2 className="w-full lg:text-3xl md:text-lg sm:text-sm mr-8 py-10 text-gray-200 text-lg font-extrabold leading-9 md:w-full">
             Frequently-asked <span className="text-green-500">questions</span>
           </h2>
           <dl className="w-full md:w-full">
             {accordionItems.map((item, index) => (
               <div key={index} className="">
                 <button
-                  className="w-full max-w-7xl p-4 text-left bg-gray-700 rounded-lg mt-1 text-xl font-semibold text-green-500 hover:bg-gray-600 focus:outline-none transition duration-300 ease-in-out"
+                  className="w-full max-w-7xl p-4 text-left bg-gray-700 rounded-lg mt-1 lg:text-xl md:text-lg sm:text-sm text-sm font-semibold text-green-500 hover:bg-gray-600 focus:outline-none transition duration-300 ease-in-out"
                   onClick={() => toggleAccordion(index)}
                 >
                   {index + 1}{"."} {item.question}
                 </button>
                 {activeIndex === index && (
-                  <div className="p-4 rounded-lg text-lg bg-gray-400 border font-semibold border-gray-300 mt-1 transition duration-300 ease-in-out">
+                  <div className="p-4 rounded-lg lg:text-xl md:text-lg sm:text-sm text-sm bg-gray-400 border font-semibold border-gray-300 mt-1 transition duration-300 ease-in-out sm:text-msm">
                     {">"} {item.answer}
                   </div>
                 )}

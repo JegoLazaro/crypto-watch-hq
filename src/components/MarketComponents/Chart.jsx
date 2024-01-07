@@ -4,17 +4,39 @@ import ReactApexChart from 'react-apexcharts';
 const Chart = ({sparkline, priceChange, isModal}) => {
     const[chartOptions] = useState({
         series:[{
+            name: "Price",
             data: [...sparkline.price],
         }],
         chart: {
-            type: "area",
+            type: "line",
             height: 120,
             sparkline: {enabled: true},
-            animation: {enabled: false},
+            animation: {enabled: true},
         },
-        tooltip: {enabled: false},
-        stroke: {width: 1},
-        colors: [chartColor()]
+        title: {
+            text: 'Weekly Chart (7d)',
+            align: 'left',
+          },
+        tooltip: {enabled: isModal ? true : false},
+        stroke: {
+            width: 2
+        },
+        colors: [chartColor()],
+        grid: {
+            show: true,
+            borderColor: '#90A4AE',
+            strokeDashArray: 0,
+            position: 'back',
+            yaxis: {
+                lines: {
+                    show: true
+                }
+            },  
+            row: {
+                colors: undefined,
+                opacity: 0.5
+            },  
+        }
     })
 
     function chartColor() {
